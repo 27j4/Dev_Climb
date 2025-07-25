@@ -1,21 +1,21 @@
-const {v2 : cloudinary} = require('cloudinary')
+const { v2: cloudinary } = require("cloudinary");
 
-cloudinary.config({ 
-    cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
-    api_key: process.env.CLOUDINARY_API_KEY,
-    api_secret: process.env.CLOUDINARY_API_SECRET
+cloudinary.config({
+  cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+  api_key: process.env.CLOUDINARY_API_KEY,
+  api_secret: process.env.CLOUDINARY_API_SECRET,
 });
 
-const uploadOnCloudinary = async(localPath)=>{
-    try {
-        if(!localPath)throw new Error("No file Exist");
-        const response = await cloudinary.uploader.upload(localPath,{
-            resource_type:"auto"
-        })
-        return response
-    } catch (error) {
-        console.log("Error from Cloudinary")
-    }
-}
+const uploadOnCloudinary = async (localPath) => {
+  try {
+    if (!localPath) throw new Error("No file Exist");
+    const response = await cloudinary.uploader.upload(localPath, {
+      resource_type: "auto",
+    });
+    return response;
+  } catch (error) {
+    console.log("Error from Cloudinary");
+  }
+};
 
 module.exports = uploadOnCloudinary;
